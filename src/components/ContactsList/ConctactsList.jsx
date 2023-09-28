@@ -8,21 +8,55 @@ import {
   ContListBtn,
   NoContactsText,
   NoFilteredText,
+  SvgContainer,
+  editButton,
+  EditButton,
 } from './ContactsList.styled';
-import { selectVisibleContacts } from 'redux/contacts/selectors';
-import { selectAllContacts } from 'redux/contacts/selectors';
-import { deleteContact } from 'redux/contacts/operations';
-import { css } from 'styled-components';
+import {
+  selectVisibleContacts,
+  selectAllContacts,
+  selectModalIsOpen,
+} from 'redux/contacts/selectors';
+
+import { deleteContact, openModal } from 'redux/contacts/operations';
+
+import { IoInformationCircleOutline } from 'react-icons/io5';
+
+import { AiOutlineDelete } from 'react-icons/ai';
+import { EditModal } from 'components/EditModal/Modal';
+import styled, { css } from 'styled-components';
+
+export const StyledDeleteIcon = styled(AiOutlineDelete)`
+  font-size: 18px;
+  width: 20px;
+
+  height: 22px;
+
+  // &:hover {
+  //   color: white;
+  // }
+`;
+
+export const StyledChangeIcon = styled(IoInformationCircleOutline)`
+  width: 20px;
+  height: 22px;
+
+  // &:hover {
+  //   color: white;
+  // }
+`;
+
 const ContactsList = () => {
   const allContacts = useSelector(selectAllContacts);
-  console.log(allContacts);
+  const modal = useSelector(selectModalIsOpen);
+
   const visibleContacts = useSelector(selectVisibleContacts);
-  console.log(visibleContacts);
 
   const dispatch = useDispatch();
 
   return (
     <>
+      {modal && <EditModal />}
       {allContacts.length === 0 && (
         <NoContactsText className={css.noContactsText}>
           There are no any contacts yet. Please add a contact by clicking the
@@ -43,13 +77,22 @@ const ContactsList = () => {
                   <ContListText>
                     {name}: <span className="number"> {number}</span>
                   </ContListText>
+                  <SvgContainer>
+                    <EditButton
+                      className="editButton"
+                      type="button"
+                      onClick={() => dispatch(openModal({ id, name, number }))}
+                    >
+                      <StyledChangeIcon />
+                    </EditButton>
 
-                  <ContListBtn
-                    type="button"
-                    onClick={() => dispatch(deleteContact(id))}
-                  >
-                    Delete
-                  </ContListBtn>
+                    <ContListBtn
+                      type="button"
+                      onClick={() => dispatch(deleteContact(id))}
+                    >
+                      <StyledDeleteIcon />
+                    </ContListBtn>
+                  </SvgContainer>
                 </ContListItem>
               ))}
             </ContListUl>

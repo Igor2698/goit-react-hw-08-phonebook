@@ -6,6 +6,13 @@ export const selectFilter = state => state.filter;
 
 export const selectAllContacts = state => state.contacts.items;
 
+export const selectModalIsOpen = state => state.contacts.openModal;
+
+export const selectUpdateContactDate = state => state.contacts.dataUpdatedContact
+
+
+// export const selectUpdateContactId = state => state.contacts.updateContactId
+
 
 
 

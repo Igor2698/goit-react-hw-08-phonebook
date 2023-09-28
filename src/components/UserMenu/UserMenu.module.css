@@ -3,6 +3,7 @@
   gap: 50px;
   color: white;
   font-size: 18px;
+  align-items: center;
 }
 
 .userMenuButton {
@@ -30,5 +31,6 @@
 }
 
 .greetingText {
+  font-size: 16px;
   color: rgb(0, 255, 200);
 }

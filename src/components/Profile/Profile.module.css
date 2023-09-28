@@ -1,0 +1,57 @@
+.profileWrapper {
+  width: 500px;
+  height: 420px;
+  padding: 30px 20px;
+  background: transparent;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  border-radius: 20px;
+  backdrop-filter: blur(15px);
+  margin: 30px auto;
+  position: relative;
+}
+
+.profileTitle {
+  position: static;
+  color: rgb(255, 255, 255);
+  font-weight: 600;
+  font-size: 26px;
+  text-align: center;
+  margin: 0px 0px 50px;
+}
+
+.textProfileWrapper {
+  width: 200px;
+  border-radius: 10px;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  position: absolute;
+  right: 24px;
+  bottom: 165px;
+  padding: 10px;
+  background: rgba(0, 0, 0, 0.333);
+}
+
+.imgProfile {
+  border-radius: 10px;
+  position: absolute;
+  top: 130px;
+  height: 200px;
+}
+
+.describeProfile {
+  color: rgb(0, 255, 200);
+}
+
+.buttonProfile {
+  padding: 10px;
+  font-size: 16px;
+  background-color: black;
+  color: white;
+  position: absolute;
+  bottom: 50px;
+  left: 200px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+}

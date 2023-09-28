@@ -14,6 +14,7 @@ import { useDispatch } from 'react-redux';
 
 import { refreshUser } from 'redux/auth/operations';
 import { Home } from 'components/Home/Home';
+import { UserProfile } from 'pages/UserProfile';
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -44,6 +45,12 @@ export const App = () => {
                 redirectTo="/contacts"
                 component={<LoginPage />}
               />
+            }
+          />
+          <Route
+            path="/profile"
+            element={
+              <PrivateRoute component={<UserProfile />} redirectTo="/login" />
             }
           />
 

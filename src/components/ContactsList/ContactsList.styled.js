@@ -1,4 +1,5 @@
-import { styled } from "styled-components"
+import styled, { css } from 'styled-components';
+import { StyledChangeIcon, StyledDeleteIcon } from "./ConctactsList"
 
 export const ContContactList = styled.div`
 
@@ -39,18 +40,26 @@ margin: 0;
 `
 
 
-export const ContListBtn = styled.button`font-size: 18px;
-background-color: #00ff00;
-color: #111;
-border: none;
-padding: 5px;
-border-radius: 15px;
-cursor: pointer;
-transition: background-color 0.3s ease, color 0.3s ease;
-max-width: 80px;
-&:active{color: #fff;}
+export const ContListBtn = styled.button`
+display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px 10px;
+    border-radius: 40px;
+    background: rgb(255, 255, 255);
+    border: none;
+    outline: none;
+    cursor: pointer;
+    transition: background 250ms ease-in-out 0s, fill 250ms ease-in-out 0s;
+  
+  &:hover {
+    background: rgb(76, 209, 55);
+  }
 
 `
+
+
+
 
 
 export const NoContactsText = styled.p`
@@ -81,8 +90,20 @@ margin: 0 auto;
 `
 
 
+export const SvgContainer = styled.div`
+display: flex;
+gap: 15px;
+`
+
+const additionalStyles = `
 
 
+`;
+
+
+export const EditButton = styled(ContListBtn)`
+${additionalStyles}
+`
 
 
 

@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { selectAllContacts } from 'redux/contacts/selectors';
 import { addContacts } from 'redux/contacts/operations';
+import { selectModalIsOpen } from 'redux/contacts/selectors';
 
 import {
   StyledForm,
@@ -14,7 +15,6 @@ import {
   InputContainer,
   ButtonForm,
 } from './Form.styled';
-
 
 const formSchema = Yup.object().shape({
   name: Yup.string()
@@ -27,49 +27,52 @@ const formSchema = Yup.object().shape({
 });
 
 const MyForm = () => {
+  const modal = useSelector(selectModalIsOpen);
   const contacts = useSelector(selectAllContacts);
   const dispatch = useDispatch();
 
   return (
-    <Formik
-      initialValues={{
-        name: '',
-        number: '',
-      }}
-      validationSchema={formSchema}
-      onSubmit={(values, actions) => {
-        const { name, number } = values;
-        if (
-          contacts.find(
-            contact =>
-              contact.name.toLowerCase() === name.toLowerCase() ||
-              contact.number === number
-          )
-        ) {
-          return alert('Phonebook already has this values');
-        }
+    !modal && (
+      <Formik
+        initialValues={{
+          name: '',
+          number: '',
+        }}
+        validationSchema={formSchema}
+        onSubmit={(values, actions) => {
+          const { name, number } = values;
+          if (
+            contacts.find(
+              contact =>
+                contact.name.toLowerCase() === name.toLowerCase() ||
+                contact.number === number
+            )
+          ) {
+            return alert('Phonebook already has this values');
+          }
 
-        dispatch(addContacts({ name, number }));
-        actions.resetForm();
-      }}
-    >
-      <StyledForm>
-        <InputContainer>
-          <StyledField type="text" name="name" placeholder=" " />
-          <Label htmlFor="name">Please enter name:</Label>
+          dispatch(addContacts({ name, number }));
+          actions.resetForm();
+        }}
+      >
+        <StyledForm>
+          <InputContainer>
+            <StyledField type="text" name="name" placeholder=" " />
+            <Label htmlFor="name">Please enter name:</Label>
 
-          <ErrorMsg name="name" component="div" />
-        </InputContainer>
-        <InputContainer>
-          <StyledField type="tel" name="number" placeholder=" " />
-          <Label htmlFor="number">Please enter number:</Label>
+            <ErrorMsg name="name" component="div" />
+          </InputContainer>
+          <InputContainer>
+            <StyledField type="tel" name="number" placeholder=" " />
+            <Label htmlFor="number">Please enter number:</Label>
 
-          <ErrorMsg name="number" component="div" />
-        </InputContainer>
+            <ErrorMsg name="number" component="div" />
+          </InputContainer>
 
-        <ButtonForm type="submit">Add contact</ButtonForm>
-      </StyledForm>
-    </Formik>
+          <ButtonForm type="submit">Add contact</ButtonForm>
+        </StyledForm>
+      </Formik>
+    )
   );
 };
 
