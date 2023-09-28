@@ -1,21 +1,11 @@
-import PropTypes from 'prop-types';
-import { MainSection, Container, SectionTitle } from './Section.styled';
+import { MainSection, Container } from './Section.styled';
 
-const Section = ({ title, children }) => {
+const Section = ({ children }) => {
   return (
     <MainSection>
-      <Container>
-        {title && <SectionTitle>{title}</SectionTitle>}
-
-        {children}
-      </Container>
+      <Container>{children}</Container>
     </MainSection>
   );
 };
 
 export default Section;
-
-Section.propTypes = {
-  title: PropTypes.string,
-  children: PropTypes.node.isRequired,
-};

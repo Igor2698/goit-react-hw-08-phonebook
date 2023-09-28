@@ -1,0 +1,25 @@
+.homeTextContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(15px); /* Применяет размытие к фону */
+  margin-top: 0; /* Убрать верхний отступ */
+  padding: 20px; /* Добавить внутренний отступ для текста */
+  border: 2px solid #ffffff; /* Добавить рамку */
+  border-radius: 12px; /* Сделать круглую рамку */
+  width: 50%; /* Задать ширину рамки */
+  height: 350px; /* Задать высоту рамки */
+  margin: 0 auto; /* Центрировать рамку по горизонтали */
+  background-color: rgba(0, 0, 0, 0.8); /* Цвет фона с прозрачностью */
+  margin-top: 140px; /* Смещение контейнера вниз */
+}
+
+.homeText {
+  color: #ffffff;
+  opacity: 0.7; /* Прозрачность текста */
+  line-height: 25px;
+  font-size: 18px;
+}
+
+

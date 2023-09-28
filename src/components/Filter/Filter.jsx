@@ -17,7 +17,6 @@ const Filter = () => {
 
   return (
     <CenterContainer>
-      <FilterTitile>Contacts</FilterTitile>
       <ContFilter>
         <FilterInput
           placeholder=" "

@@ -31,20 +31,6 @@ text-transform: capitalize;`
 
 
 
-// .container {
-//    
-//   }
-  
-//   
-  
-//   @media screen and (min-width: 768px) {
-//     .container {
-//       width: 768px;
-//       padding-right: 32px;
-//       padding-left: 32px;
-//     }
-//   }
-  
 
   
 

@@ -9,13 +9,30 @@ body {
   -moz-osx-font-smoothing: grayscale;
 
   background-color: #000;
-  color: #00ff00;
+  color: white;
   font-family: 'Arial', sans-serif;
   margin: 0;
   padding: 0;
+  background-image: url(https://png.pngtree.com/background/20230617/original/pngtree-old-corded-phone-in-cyberpunk-style-a-3d-render-on-a-picture-image_3702800.jpg);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  background-color: rgb(87, 87, 87);
+  min-height: 100vh;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
 }

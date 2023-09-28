@@ -1,41 +1,67 @@
-import Form from '../Form';
-import Section from '../Section';
-import ContactsList from '../ContactsList';
-import Filter from '../Filter';
+import { Route, Routes } from 'react-router-dom';
+// import Form from '../Form';
+// import Section from '../Section';
+// import ContactsList from '../ContactsList';
+// import Filter from '../Filter';
+// import { selectContacts, selectIsLoading } from 'redux/selectors/selectors';
+// import { selectVisibleContacts } from 'redux/selectors/selectors';
+// import { fetchContacts } from 'redux/operations';
+// import { Loader } from 'components/Grid';
 import { useSelector } from 'react-redux';
-import { selectContacts, selectIsLoading } from 'redux/selectors/selectors';
-import { selectVisibleContacts } from 'redux/selectors/selectors';
-import { fetchContacts } from 'redux/operations';
+import { Layout } from 'components/Layout';
+import { RestrictedRoute } from 'components/RestrictedRoute';
+import { Contacts } from 'pages/Contacts';
+import { PrivateRoute } from 'components/PrivateRoute';
+
+import { Register } from 'pages/Register';
+
+import { LoginPage } from 'pages/LoginPage';
+
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { Loader } from 'components/Grid';
+
+import { refreshUser } from 'redux/auth/operations';
+import { Home } from 'components/Home/Home';
 
 export const App = () => {
-  const contacts = useSelector(selectContacts);
-  const isLoading = useSelector(selectIsLoading);
-  const visibleContacts = useSelector(selectVisibleContacts);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchContacts());
+    dispatch(refreshUser());
   }, [dispatch]);
 
   return (
     <div>
-      <Section title="Phonebook">
-        <Form />
-      </Section>
-      <Section>
-        <Filter />
-        {contacts.length > 0 && visibleContacts.length === 0 && (
-          <p>No one found with that name</p>
-        )}
-        {contacts.length === 0 && !isLoading && (
-          <p>Please add contact by click on "Add conctact" button</p>
-        )}
-        {isLoading && <Loader />}
-        {contacts.length > 0 && <ContactsList />}
-      </Section>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Home />} />
+          <Route
+            path="/register"
+            element={
+              <RestrictedRoute
+                redirectTo="/contacts"
+                component={<Register />}
+              />
+            }
+          />
+
+          <Route
+            path="/login"
+            element={
+              <RestrictedRoute
+                redirectTo="/contacts"
+                component={<LoginPage />}
+              />
+            }
+          />
+
+          <Route path="/login " />
+          <Route
+            path="/contacts"
+            element={<PrivateRoute redirectTo="/" component={<Contacts />} />}
+          />
+        </Route>
+      </Routes>
     </div>
   );
 };

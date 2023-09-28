@@ -1,10 +1,11 @@
 import { styled } from "styled-components"
 
 export const ContContactList = styled.div`
-background-color: #111;
+
 padding: 20px;
 border-radius: 10px;
-box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.6);`
+box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.6);
+backdrop-filter: blur(15px);`
 
 
 export const ContListUl = styled.ul`  list-style: none;
@@ -48,6 +49,34 @@ cursor: pointer;
 transition: background-color 0.3s ease, color 0.3s ease;
 max-width: 80px;
 &:active{color: #fff;}
+
+`
+
+
+export const NoContactsText = styled.p`
+
+border: 2px solid rgba(255, 255, 255, 0.5);
+backdrop-filter: blur(15px);
+width: 30%;
+padding: 10px;
+border-radius: 15px;
+text-align: center;
+margin: 0 auto;
+color: rgb(0, 255, 200);
+
+`
+
+
+export const NoFilteredText = styled.p`
+color: rgb(0, 255, 200);
+
+border: 2px solid rgba(255, 255, 255, 0.5);
+backdrop-filter: blur(15px);
+width: 30%;
+padding: 10px;
+border-radius: 15px;
+text-align: center;
+margin: 0 auto;
 
 `
 

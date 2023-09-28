@@ -2,7 +2,9 @@ import React from 'react';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectContacts } from 'redux/selectors/selectors';
+
+import { selectAllContacts } from 'redux/contacts/selectors';
+import { addContacts } from 'redux/contacts/operations';
 
 import {
   StyledForm,
@@ -12,7 +14,7 @@ import {
   InputContainer,
   ButtonForm,
 } from './Form.styled';
-import { addContact } from 'redux/operations';
+
 
 const formSchema = Yup.object().shape({
   name: Yup.string()
@@ -20,12 +22,12 @@ const formSchema = Yup.object().shape({
     .min(3, 'Too Short!')
     .required('This field is required, please fill that'),
   number: Yup.string()
-    .matches(/^\d{3}-\d{2}-\d{2}$/, 'Must be in format: 000-00-00')
+    .matches(/^\d+$/, 'Must be only numbers')
     .required('This field is required, please fill that'),
 });
 
 const MyForm = () => {
-  const contacts = useSelector(selectContacts);
+  const contacts = useSelector(selectAllContacts);
   const dispatch = useDispatch();
 
   return (
@@ -46,7 +48,8 @@ const MyForm = () => {
         ) {
           return alert('Phonebook already has this values');
         }
-        dispatch(addContact({ name, phone: number }));
+
+        dispatch(addContacts({ name, number }));
         actions.resetForm();
       }}
     >
