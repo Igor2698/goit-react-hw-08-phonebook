@@ -1,13 +1,5 @@
 import { Route, Routes } from 'react-router-dom';
-// import Form from '../Form';
-// import Section from '../Section';
-// import ContactsList from '../ContactsList';
-// import Filter from '../Filter';
-// import { selectContacts, selectIsLoading } from 'redux/selectors/selectors';
-// import { selectVisibleContacts } from 'redux/selectors/selectors';
-// import { fetchContacts } from 'redux/operations';
-// import { Loader } from 'components/Grid';
-import { useSelector } from 'react-redux';
+
 import { Layout } from 'components/Layout';
 import { RestrictedRoute } from 'components/RestrictedRoute';
 import { Contacts } from 'pages/Contacts';

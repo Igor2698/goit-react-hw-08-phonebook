@@ -1,6 +1,5 @@
 import {
   CenterContainer,
-  FilterTitile,
   ContFilter,
   FilterInput,
   FilterPlaceholder,
