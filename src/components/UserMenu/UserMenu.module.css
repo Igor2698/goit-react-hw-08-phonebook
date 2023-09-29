@@ -10,23 +10,21 @@
   width: 100px;
   border-radius: 40px;
   margin: 0;
-  padding: 0;
+  padding: 10px;
   font-size: 20px;
-  background-color: #114cf0; /* Цвет фона */
+  background-color: #114cf0;
   color: white;
-  border: none; /* Убираем границу */
-  cursor: pointer; /* Курсор при наведении */
+  border: none;
+  cursor: pointer;
   transition: background-color 0.5s ease-in-out, opacity 0.2s ease-in-out;
-
   &:hover {
-    background-color: #0056b3; /* Изменяем цвет фона */
+    background-color: #0056b3;
   }
 
-  /* При фокусе на кнопке (например, при нажатии клавиши Tab) */
   &:focus {
     background-color: black;
-    outline: none; /* Убираем стандартное выделение при фокусе */
-    box-shadow: 0 0 5px rgba(0, 123, 255, 0.7); /* Тень при фокусе */
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.7);
   }
 }
 

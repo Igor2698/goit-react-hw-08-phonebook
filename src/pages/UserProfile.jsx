@@ -1,9 +1,11 @@
 import { Profile } from 'components/Profile/Profile';
 
-export const UserProfile = () => {
+const UserProfile = () => {
   return (
     <>
       <Profile />
     </>
   );
 };
+
+export default UserProfile;

@@ -3,6 +3,7 @@ import { logIn } from 'redux/auth/operations';
 import css from './LoginForm.module.css';
 import { AiFillLock } from 'react-icons/ai';
 import { AiOutlineMail } from 'react-icons/ai';
+import { BiLogIn } from 'react-icons/bi';
 
 export const LoginForm = () => {
   const dispatch = useDispatch();
@@ -33,7 +34,8 @@ export const LoginForm = () => {
       </label>
 
       <button className={css.buttonForm} type="submit">
-        Log In
+        Login
+        <BiLogIn className={css.logInSvg} />
       </button>
     </form>
   );

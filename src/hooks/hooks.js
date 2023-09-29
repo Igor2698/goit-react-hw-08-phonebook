@@ -6,7 +6,10 @@ import {
     selectIsRefreshing,
 } from 'redux/auth/selectors';
 
+import { selectLoading } from 'redux/contacts/selectors';
+
 export const useAuth = () => {
+    const isLoading = useSelector(selectLoading)
     const isLoggedIn = useSelector(selectIsLoggedIn);
     const isRefreshing = useSelector(selectIsRefreshing);
     const user = useSelector(selectUser);
@@ -15,5 +18,6 @@ export const useAuth = () => {
         isLoggedIn,
         isRefreshing,
         user,
+        isLoading
     };
 };

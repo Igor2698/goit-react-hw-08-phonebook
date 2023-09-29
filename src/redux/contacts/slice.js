@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 import { logOut } from 'redux/auth/operations';
-import { fetchContacts, addContacts, deleteContact, openModal, editContact } from './operations';
+import { fetchContacts, addContacts, deleteContact, openModal, editContact, closeModal } from './operations';
 
 const handlePending = state => {
     state.isLoading = true;
@@ -71,6 +71,9 @@ const contactsSlice = createSlice({
 
             state.openModal = false;
             state.isLoading = false;
+        },
+        [closeModal.type](state, action) {
+            state.openModal = false;
         },
 
     },

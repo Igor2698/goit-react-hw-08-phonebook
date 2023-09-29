@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { StyledChangeIcon, StyledDeleteIcon } from "./ConctactsList"
+
 
 export const ContContactList = styled.div`
 
@@ -20,7 +20,17 @@ border-radius: 5px;
 display: flex;
 justify-content: space-between;
 align-items: center;
-gap: 15px;`
+gap: 15px;
+
+${(props) =>
+    props.modalOpen &&
+    css`
+    opacity: 0.4;
+    pointer-events: none;
+  `}
+
+
+`
 
 
 export const ContListText = styled.p`    
@@ -41,19 +51,26 @@ margin: 0;
 
 
 export const ContListBtn = styled.button`
-display: flex;
+
+
+
+   display: flex;
+
+
+     background: rgb(0, 255, 200);
     justify-content: center;
     align-items: center;
     padding: 5px 10px;
     border-radius: 40px;
-    background: rgb(255, 255, 255);
+  
     border: none;
     outline: none;
     cursor: pointer;
-    transition: background 250ms ease-in-out 0s, fill 250ms ease-in-out 0s;
+    transition: background 500ms ease-in-out 0s, color 250ms ease-in-out 0s;
   
   &:hover {
-    background: rgb(76, 209, 55);
+    color: white;
+    background: rgb(209, 36, 47);
   }
 
 `
@@ -96,13 +113,29 @@ gap: 15px;
 `
 
 const additionalStyles = `
+transition: all 500ms ease;
 
-
+&:hover {
+  color: black;
+  background: yellow;
+}
 `;
+
 
 
 export const EditButton = styled(ContListBtn)`
 ${additionalStyles}
+
+
+`
+
+const stylesItem = `
+background-color: black;
+`
+
+
+export const EdditItem = styled(ContListItem)`
+${stylesItem}
 `
 
 

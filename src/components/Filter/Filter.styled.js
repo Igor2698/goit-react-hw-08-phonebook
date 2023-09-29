@@ -45,7 +45,7 @@ padding: 5px;
   }
 
 &:focus + ${FilterPlaceholder}, &:not(:placeholder-shown) + ${FilterPlaceholder}{
-    transform: translateY(-150%);
+    transform: translateY(-160%);
     font-size: 16px;
     color: rgb(0, 255, 200);;
 }

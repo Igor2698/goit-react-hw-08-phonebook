@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { selectUpdateContactDate } from 'redux/contacts/selectors';
-import { editContact } from 'redux/contacts/operations';
+import { editContact, closeModal } from 'redux/contacts/operations';
 import css from './EditModal.module.css';
 
 export const EditModal = () => {
@@ -73,7 +73,7 @@ export const EditModal = () => {
         <button
           className={css.modalButton}
           onClick={() => {
-            // dispatch(closeModal());
+            dispatch(closeModal());
           }}
           type="button"
         >

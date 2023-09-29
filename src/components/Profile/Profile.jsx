@@ -3,6 +3,8 @@ import { useAuth } from 'hooks/hooks';
 import css from './Profile.module.css';
 import { GiExitDoor } from 'react-icons/gi';
 import styled from 'styled-components';
+import { useDispatch } from 'react-redux';
+import { logOut } from 'redux/auth/operations';
 
 export const StyledExitIcon = styled(GiExitDoor)`
   font-size: 18px;
@@ -16,6 +18,7 @@ export const StyledExitIcon = styled(GiExitDoor)`
 `;
 
 export const Profile = () => {
+  const dispatch = useDispatch();
   const {
     user: { name, email },
   } = useAuth();
@@ -36,7 +39,11 @@ export const Profile = () => {
         <p className={css.describeProfile}>Email:</p>
         <p>{email}</p>
       </div>
-      <button className={css.buttonProfile} type="button">
+      <button
+        onClick={() => dispatch(logOut())}
+        className={css.buttonProfile}
+        type="button"
+      >
         Logout
         <StyledExitIcon />
       </button>

@@ -58,4 +58,5 @@ export const editContact = createAsyncThunk(
 );
 
 export const openModal = createAction('auth/openModal');
+export const closeModal = createAction('auth/closeModal');
 

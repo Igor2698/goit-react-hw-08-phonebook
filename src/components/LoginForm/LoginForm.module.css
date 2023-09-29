@@ -35,19 +35,22 @@
 }
 
 .buttonForm {
-  width: 30%;
-  padding: 10px 20px;
-  background-color: #0074d9; /* Цвет фона кнопки */
-  color: #fff; /* Цвет текста на кнопке */
+  width: 100px;
+  padding: 15px 0;
+  background-color: black;
+  color: #fff;
   border: none;
   border-radius: 10px;
-  font-size: 18px;
+  font-size: 16px;
   cursor: pointer;
-  transition: background-color 0.5s ease-in-out; /* Плавное изменение цвета фона */
+  transition: background-color 0.5s ease-in-out;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .buttonForm:hover {
-  background-color: #0056b3;
+  background-color: rgb(0, 255, 200);
 }
 
 .formSvg {
@@ -56,4 +59,9 @@
   position: absolute;
   right: 15px;
   bottom: 30px;
+}
+
+.logInSvg {
+  font-size: 22px;
+  width: 30px;
 }

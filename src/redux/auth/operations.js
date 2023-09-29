@@ -1,4 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
+import 'react-toastify/dist/ReactToastify.css';
+import { toast } from 'react-toastify';
 
 import axios from "axios";
 
@@ -23,6 +25,11 @@ export const register = createAsyncThunk(
     async (credentials, thunkAPI) => {
         try {
             const res = await axios.post('/users/signup', credentials);
+            toast.success(
+                `Congratulations, ${res.data.user.name}. You have successfully registered`, { position: "top-center" }
+            );
+
+
 
 
             setAuthHeader(res.data.token);
@@ -42,7 +49,9 @@ export const logIn = createAsyncThunk(
         try {
             const res = await axios.post('/users/login', credentials);
 
-
+            toast.success(
+                `Welcome back, ${res.data.user.name}. `, { position: "top-center" }
+            );
             setAuthHeader(res.data.token);
 
             return res.data;
@@ -57,7 +66,11 @@ export const logIn = createAsyncThunk(
 export const logOut = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
     try {
         await axios.post('/users/logout');
+
         clearAuthHeader();
+        toast.info(
+            'Are you leaving already? :C  We look forward to your return!', { position: "top-center" }
+        );
     } catch (error) {
         return thunkAPI.rejectWithValue(error.message);
     }

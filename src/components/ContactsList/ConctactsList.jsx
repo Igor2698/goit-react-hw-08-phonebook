@@ -9,7 +9,6 @@ import {
   NoContactsText,
   NoFilteredText,
   SvgContainer,
-  editButton,
   EditButton,
 } from './ContactsList.styled';
 import {
@@ -24,7 +23,7 @@ import { IoInformationCircleOutline } from 'react-icons/io5';
 
 import { AiOutlineDelete } from 'react-icons/ai';
 import { EditModal } from 'components/EditModal/Modal';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
 export const StyledDeleteIcon = styled(AiOutlineDelete)`
   font-size: 18px;
@@ -54,11 +53,15 @@ const ContactsList = () => {
 
   const dispatch = useDispatch();
 
+  const handleOnClick = ({ id, name, number }) => {
+    dispatch(openModal({ id, name, number }));
+  };
+
   return (
     <>
       {modal && <EditModal />}
       {allContacts.length === 0 && (
-        <NoContactsText className={css.noContactsText}>
+        <NoContactsText>
           There are no any contacts yet. Please add a contact by clicking the
           "Add contact" button.
         </NoContactsText>
@@ -73,7 +76,7 @@ const ContactsList = () => {
           <>
             <ContListUl>
               {visibleContacts.map(({ id, name, number }) => (
-                <ContListItem key={id}>
+                <ContListItem modalopen={modal} key={id}>
                   <ContListText>
                     {name}: <span className="number"> {number}</span>
                   </ContListText>
@@ -81,7 +84,7 @@ const ContactsList = () => {
                     <EditButton
                       className="editButton"
                       type="button"
-                      onClick={() => dispatch(openModal({ id, name, number }))}
+                      onClick={() => handleOnClick({ id, name, number })}
                     >
                       <StyledChangeIcon />
                     </EditButton>

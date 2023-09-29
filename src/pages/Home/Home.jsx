@@ -1,12 +1,7 @@
 import css from './Home.module.css';
-export const Home = () => {
+const Home = () => {
   return (
     <div>
-      {/* <img
-        className={css.homeImg}
-        src="https://png.pngtree.com/background/20230617/original/pngtree-old-corded-phone-in-cyberpunk-style-a-3d-render-on-a-picture-image_3702800.jpg"
-        alt=""
-      /> */}
       <div className={css.homeTextContainer}>
         <h1>Welcome to PHONEBOOK!</h1>
         <p className={css.homeText}>
@@ -27,5 +22,7 @@ export const Home = () => {
     </div>
   );
 };
+
+export default Home;
 
 //
